@@ -1,0 +1,63 @@
+<style>
+	.teste {
+	    background-color: #000000;
+	}
+
+	h1 {
+	    color: white;
+	    text-align: center;
+	}
+
+	p {
+	    font-family: verdana;
+	    font-size: 20px;
+	}
+</style>
+
+<ion-header>
+	<ion-navbar>
+		<ion-title>
+			Música ao Vivo
+		</ion-title>
+	</ion-navbar>
+</ion-header>
+
+
+
+<ion-content class="testes">
+
+	<div class="col-sm-12">
+		<div class="row">
+			LOGO
+		</div>
+	</div>
+
+	<div>
+		<ion-label>Seja Bem Vindo ao</ion-label>
+		<ion-label>Música ao Vivo</ion-label>
+	</div>
+	<!-- <ion-buttons end>
+		<button ion-button icon-only (click)="addSong()">
+			<ion-icon name="add"></ion-icon>
+		</button>
+	</ion-buttons>
+
+	<ion-list>
+		<ion-item *ngFor="let song of songs | async" (click)="showOptions(song.$key, song.title)">
+			{{song.title}}
+		</ion-item>
+	</ion-list> -->
+
+	<ion-buttons>
+		<div class="col-sm-12">
+			<button ion-button round color="light" clear full (click)="openLoginPage()" >Estabelecimento</button>
+		</div>
+		<div class="col-sm-12">
+			<button ion-button round full>Banda / Cantor(a)</button>
+		</div>
+		<div class="col-sm-12">
+			<button ion-button round full>Usuário</button>	
+		</div>
+	</ion-buttons>
+
+</ion-content>
