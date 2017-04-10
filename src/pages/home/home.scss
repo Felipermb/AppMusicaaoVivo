@@ -1,6 +1,22 @@
 page-home {
-   //background-image: url(../../../static/img/home-background.jpg); 
-   background-color: #000000;
-   background-size: 100%;
+   // background-image: url(../../../static/img/home-background.jpg); 
 }
-	
+
+.home{
+	background-image: url(../../../static/img/home-background.jpg); 
+	background-size: 100%;
+}
+.outline-btn {
+    width: 100%;
+}
+
+.logo {
+	height: 50%;
+	width: 100%;
+	.logo-icon {
+	  text-align: center;
+	  font-size: 40px;
+	  padding-top: 30%;
+	  color: white;
+	}
+}
