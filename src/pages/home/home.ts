@@ -17,7 +17,7 @@ export class HomePage {
   af: AngularFire, public actionSheetCtrl: ActionSheetController) {
     this.songs = af.database.list('/songs');
 
-  }
+  } 
 
   openLoginPage(){
     this.navCtrl.push(LoginPage);

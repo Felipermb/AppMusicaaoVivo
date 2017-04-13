@@ -10,9 +10,9 @@
 
 <ion-content>
 	<div class="logo">
-	    <div class="logo-icon">
-	      LOGO
-	    </div>
+		<div class="logo-icon">
+			LOGO
+		</div>
 	</div>
 	<!-- <ion-buttons end>
 		<button ion-button icon-only (click)="addSong()">
@@ -26,16 +26,30 @@
 		</ion-item>
 	</ion-list> -->
 
+
+
 	<ion-buttons>
+
 		<div class="col-sm-12">
-			<button  ion-button round color="light" outline class="outline-btn" (click)="openLoginPage()" >Estabelecimento</button>
+			<button  ion-button round color="light" outline class="outline-btn facebook-btn" 
+			(click)="registerUserWithFacebook()">
+				<ion-icon name="logo-facebook"> </ion-icon>
+				 Login com Facebook
+			</button>
 		</div>
+
 		<div class="col-sm-12">
-			<button  ion-button round color="light" outline class="outline-btn">Banda / Cantor(a)</button>
+			<button  ion-button round color="light" outline class="outline-btn google-btn" 
+			(click)="registerUserWithGoogle()" >
+				<ion-icon name="logo-google"> </ion-icon>
+				 Login com Google
+			</button>
 		</div>
+
 		<div class="col-sm-12">
-			<button  ion-button round color="light" outline class="outline-btn">Usuário</button>	
+			<button  ion-button round color="light" outline class="outline-btn" (click)="openLoginPage()" >Login com email</button>	
 		</div>
+
 	</ion-buttons>
 	
 </ion-content>

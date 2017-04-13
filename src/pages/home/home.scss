@@ -2,6 +2,10 @@ page-home {
    // background-image: url(../../../static/img/home-background.jpg); 
 }
 
+ion-icon{
+	margin-right: 5px;
+}
+
 .home{
 	background-image: url(../../../static/img/home-background.jpg); 
 	background-size: 100%;
@@ -20,3 +24,11 @@ page-home {
 	  color: white;
 	}
 }
+
+.facebook-btn {
+    background-color: #3b5998;
+  }
+
+  .google-btn {
+    background-color: #d34836;
+  }
