@@ -1,7 +1,7 @@
 <ion-header>
 
 	<ion-navbar>
-		<ion-title>login</ion-title>
+		<ion-title>Login</ion-title>
 	</ion-navbar>
 
 </ion-header>
@@ -19,7 +19,7 @@
 		<br />
 	</div>
 
-	<form (ngSubmit)="loginFunction()" >
+	<form  (ngSubmit)="loginUser()" >
 		<ion-list>
 			<!-- <input [(ngModel)]="email" name="email">
 			<p>Value: {{ email }}</p> -->
@@ -39,6 +39,9 @@
 			<p>{{error}}</p>
 		</div>
 	</form>
+	<div class="col-sm-12">
+		<a (click)="openRegistrarPage()" ><label style="color: #c7c7c7" >Ainda não tem uma conta ? Clique aqui</label></a>
+	</div>
 
 
 	<!-- <ion-label stacked >E-mail</ion-label>

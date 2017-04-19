@@ -1,0 +1,28 @@
+
+<ion-header>
+	<ion-navbar>
+		<ion-title>UserPage</ion-title>
+
+		<ion-buttons start>
+			<button ion-button icon-only (click)="logout()" >
+				<ion-icon name="ios-log-out-outline" ></ion-icon>
+			</button>
+		</ion-buttons>
+	</ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+	<ion-list *ngFor="let evento of eventos | async ">
+		<ion-card>
+			<ion-card-header>
+				Evento Hoje na {{ evento.UidEstabelecimento }} 
+			</ion-card-header>
+			<ion-card-content>
+				Teremos a Banda {{ evento.UidBanda }}
+			</ion-card-content>
+		</ion-card>
+	</ion-list> 
+</ion-content>
