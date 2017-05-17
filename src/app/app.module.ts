@@ -16,6 +16,7 @@ import { LoginPage } from '../pages/login/login';
 import { RegistrarPage } from '../pages/registrar/registrar' ;
 import { UserPage } from '../pages/user-page/user-page';
 import { DetalharEventoPage } from '../pages/detalhar-evento/detalhar-evento';
+import { PagamentoModalPage } from '../pages/pagamento-modal/pagamento-modal';
 
 
 // Configuração do FireBase, Onde conecto com a URL e recebo os .json
@@ -34,7 +35,8 @@ export const firebaseConfig = {
     LoginPage,
     RegistrarPage,
     UserPage,
-    DetalharEventoPage
+    DetalharEventoPage,
+    PagamentoModalPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -47,7 +49,8 @@ export const firebaseConfig = {
     LoginPage,
     RegistrarPage,
     UserPage,
-    DetalharEventoPage
+    DetalharEventoPage,
+    PagamentoModalPage
   ],
   providers: [
     StatusBar,

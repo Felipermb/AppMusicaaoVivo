@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController,AlertController, NavParams } from 'ionic-angular';
+import { NavController,AlertController, NavParams, LoadingController } from 'ionic-angular';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import { Geolocation } from '@ionic-native/geolocation';
 import firebase from "firebase";
 
 import { AuthService } from '../../providers/auth-service';
@@ -19,6 +20,9 @@ export class UserPage {
 	estabelecimentos: FirebaseListObservable<any>;
 	bandas: FirebaseListObservable<any>;
 
+	latitudeUser: number = null;
+	longitudeUser: number = null;
+
 	name: any;
 	email : any; 
 	photoUrl : any; 
@@ -27,7 +31,21 @@ export class UserPage {
 	evento: [any];
 
 	constructor(public navCtrl: NavController, public alertCtrl: AlertController, public navParams: NavParams,
-		public authService: AuthService,  af: AngularFire) {
+		public authService: AuthService,  af: AngularFire, public geolocation: Geolocation,  public loadingCtrl: LoadingController) {
+
+		if(this.latitudeUser == null && this.longitudeUser == null){
+			this.getLocation();			
+		}
+		var self = this;
+		firebase.auth().onAuthStateChanged(function(user) {
+			if (user) {
+				self.uid = user.uid;
+				console.log(self.uid)
+			} else {
+				console.log("Ninguem logado");
+				return false;
+			}
+		}); 
 
 		this.eventos = af.database.list('/Evento');
 		this.estabelecimentos = af.database.list('/Estabelecimento');	
@@ -36,6 +54,25 @@ export class UserPage {
 
 	ionViewDidLoad() {
 		console.log('ionViewDidLoad UserPage');
+	}
+
+	getLocation():void {
+
+		let loading = this.loadingCtrl.create({
+			content: 'Carregando dados...'
+		});
+		loading.present();
+
+		this.geolocation.getCurrentPosition().then((position) => {
+			this.latitudeUser = position.coords.latitude;
+			this.longitudeUser = position.coords.longitude;
+			console.log(this.latitudeUser);
+			console.log(this.longitudeUser);
+			loading.dismiss();
+		}, (error) => {
+			loading.dismiss();
+			alert(error);
+		});
 	}
 
 	openHomePage(){
@@ -48,7 +85,9 @@ export class UserPage {
 	}
 	navigate(evento){
 		this.navCtrl.push(DetalharEventoPage, {
-			item: evento
+			item: evento,
+			lat: this.latitudeUser,
+			lng: this.longitudeUser
 		});
 	}
 
