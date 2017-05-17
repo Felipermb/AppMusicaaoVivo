@@ -5,6 +5,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AngularFireModule } from 'angularfire2';
 import * as firebase from 'firebase';
+import { Geolocation } from '@ionic-native/geolocation';
 // import firebase from "firebase";
 
 import { AuthService } from '../providers/auth-service';
@@ -14,6 +15,7 @@ import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { RegistrarPage } from '../pages/registrar/registrar' ;
 import { UserPage } from '../pages/user-page/user-page';
+import { DetalharEventoPage } from '../pages/detalhar-evento/detalhar-evento';
 
 
 // Configuração do FireBase, Onde conecto com a URL e recebo os .json
@@ -31,7 +33,8 @@ export const firebaseConfig = {
     HomePage,
     LoginPage,
     RegistrarPage,
-    UserPage
+    UserPage,
+    DetalharEventoPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -43,11 +46,13 @@ export const firebaseConfig = {
     HomePage,
     LoginPage,
     RegistrarPage,
-    UserPage
+    UserPage,
+    DetalharEventoPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    Geolocation,
     AuthService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]

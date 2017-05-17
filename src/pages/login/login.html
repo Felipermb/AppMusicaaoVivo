@@ -14,9 +14,8 @@
 
 <ion-content padding>
 
-	<div class="alert alert-success" role="alert" *ngIf="sucesso">
-		Formulário enviado com sucesso!
-		<br />
+	<div class="alert alert-warning" role="alert" *ngIf="sucesso">
+		{{ texto }}
 	</div>
 
 	<form  (ngSubmit)="loginUser()" >
@@ -24,7 +23,7 @@
 			<!-- <input [(ngModel)]="email" name="email">
 			<p>Value: {{ email }}</p> -->
 			<ion-label stacked >E-mail</ion-label>
-			<ion-input type="text"  [(ngModel)]="usuario.email" name="email" ></ion-input>
+			<ion-input type="text"  [(ngModel)]="usuario.email" name="email" (keyup)="focusInEmail()" ></ion-input>
 			<ion-label stacked>Senha</ion-label>
 			<ion-input type="password"  [(ngModel)]="usuario.senha" name="senha" ></ion-input>
 		</ion-list>

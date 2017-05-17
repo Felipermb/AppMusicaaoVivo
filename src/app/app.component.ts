@@ -11,6 +11,7 @@ import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { RegistrarPage } from '../pages/registrar/registrar' ;
 import { UserPage } from '../pages/user-page/user-page';
+import { DetalharEventoPage } from '../pages/detalhar-evento/detalhar-evento';
 
 
 @Component({

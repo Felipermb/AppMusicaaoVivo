@@ -1,22 +1,47 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController,AlertController, NavParams, LoadingController  } from 'ionic-angular';
+import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import firebase from "firebase";  
+import { Login } from "../../models/loginModel";
 
-/*
-  Generated class for the Registrar page.
+import { AuthService } from '../../providers/auth-service';
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
+import { UserPage } from "../user-page/user-page";
+
 @Component({
-  selector: 'page-registrar',
-  templateUrl: 'registrar.html'
+	selector: 'page-registrar',
+	templateUrl: 'registrar.html'
 })
 export class RegistrarPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+	email: any;
+	senha: any;
+	nome: any;
+	sucesso = false;
+	texto: any;
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad RegistrarPage');
-  }
+	constructor(public navCtrl: NavController, public alertCtrl: AlertController, 
+		public authService: AuthService , public navParams: NavParams, public loadingCtrl: LoadingController) {
+	}
+
+	focusInNome(){
+		this.sucesso = false;
+	}
+
+	ionViewDidLoad() {
+		console.log('ionViewDidLoad RegistrarPage');
+	}
+
+	registerUser(){
+		this.authService.register(this.email, this.senha, this.nome).then( authService => {
+			this.navCtrl.setRoot(UserPage);
+		}, error => {
+			this.sucesso = true;
+			this.texto = error.message;
+			console.log(error.message);
+		});
+	}
+
+	
 
 }

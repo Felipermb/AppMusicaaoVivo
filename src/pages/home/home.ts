@@ -22,11 +22,17 @@ export class HomePage {
   constructor(public navCtrl: NavController, public alertCtrl: AlertController,
     af: AngularFire, public actionSheetCtrl: ActionSheetController) {
     // this.songs = af.database.list('/songs');"
-    // firebase.auth().onAuthStateChanged(function(user) {
-    //   if (user) {
-    //     navCtrl.setRoot(UserPage);
-    //   }
-    // });
+
+    var self = this;
+
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        self.openUserPage();
+      } else {
+        console.log("Ninguem logado");
+        return false;
+      }
+    }); 
   } 
 
   openUserPage(){

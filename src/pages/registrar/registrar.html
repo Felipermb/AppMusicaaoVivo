@@ -1,18 +1,62 @@
-<!--
-  Generated template for the Registrar page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Registrar</ion-title>
-  </ion-navbar>
+	<ion-navbar>
+		<ion-title>Registrar-se</ion-title>
+	</ion-navbar>
 
 </ion-header>
 
+<style type="text/css">
+	ion-input{
+		color: #ffffff;
+	}
+</style>
 
 <ion-content padding>
 
+	<div class="alert alert-warning" role="alert" *ngIf="sucesso">
+		{{ texto }}
+	</div>
+
+	<form  (ngSubmit)="registerUser()" >
+		<ion-list>
+			<!-- <input [(ngModel)]="email" name="email">
+			<p>Value: {{ email }}</p> -->
+			<ion-label stacked >Nome</ion-label>
+			<ion-input type="text"  [(ngModel)]="nome" name="nome" (keyup)="focusInNome()" ></ion-input>
+			<ion-label stacked >E-mail</ion-label>
+			<ion-input type="text"  [(ngModel)]="email" name="email" ></ion-input>
+			<ion-label stacked>Senha</ion-label>
+			<ion-input type="password"  [(ngModel)]="senha" name="senha" ></ion-input>
+		</ion-list>
+
+		<ion-buttons>
+			<div class="col-sm-2">
+				<button type="submit" ion-button round color="light" outline class="outline-btn">Registrar-se</button>
+			</div>
+		</ion-buttons>
+
+		<div padding class="error" *ngIf="error">
+			<p>{{error}}</p>
+		</div>
+	</form>
+
+
+	<!-- <ion-label stacked >E-mail</ion-label>
+	<ion-input type="text" id="email" name="email" 	value="" ></ion-input>
+
+	<ion-label stacked>Senha</ion-label>
+	<ion-input type="password" ng-model="senha" value="" ></ion-input>
+
+	<ion-buttons>
+		<div class="col-sm-2">
+			<button  ion-button round color="light" outline class="outline-btn" (click)="loginFunction()" >Entrar</button>
+		</div>
+	</ion-buttons>
+
+	<ion-buttons>
+		<div class="col-sm-2">
+			<button  ion-button round color="light" outline class="outline-btn" (click)="testeLabel(senha)" >Teste</button>
+		</div>
+	</ion-buttons> -->
 </ion-content>

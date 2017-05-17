@@ -12,7 +12,7 @@ export class AuthService {
   constructor(public http: Http) {
     console.log('Hello AuthService Provider');
     this.fireAuth = firebase.auth();
-    this.userData = firebase.database().ref('/userData');
+    this.userData = firebase.database().ref('/Login');
   }
 
   // function for login
@@ -21,10 +21,10 @@ export class AuthService {
   }
 
   //function for the register
-  register(email: string, password: string): any {
+  register(email: string, password: string, name: string): any {
     return this.fireAuth.createUserWithEmailAndPassword(email, password)
     .then((newUser) => {
-      this.userData.child(newUser.uid).set({email: email});
+      this.userData.child(newUser.uid).set({email: email, senha: password, nome: name});
     });
   }
 
