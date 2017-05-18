@@ -6,6 +6,7 @@ import firebase from "firebase";
 
 declare var google
 
+import { UserPage } from "../user-page/user-page";
 
 import { PagamentoModalPage } from '../pagamento-modal/pagamento-modal';
 
@@ -22,6 +23,7 @@ export class DetalharEventoPage {
 	evento : any;
 	latitudeUser: number
 	longitudeUser: number
+	uidEvento: any;
 
 	constructor(public navCtrl: NavController, public navParams: NavParams,
 		af: AngularFire, public geolocation: Geolocation,public modalCtrl: ModalController,
@@ -32,8 +34,10 @@ export class DetalharEventoPage {
 		this.evento = navParams.get("item");
 		this.latitudeUser = navParams.get("lat");
 		this.longitudeUser = navParams.get("lng");
+		this.uidEvento = navParams.get("uidEvento");
+
 		console.log("User: "+this.latitudeUser+" - "+this.longitudeUser);
-		console.log("Esta: "+this.evento.latitute+" - "+this.evento.longitude);
+		console.log("Esta: "+this.evento.latitude+" - "+this.evento.longitude);
 		// this.loadMap();
 		// this.initMap();
 		// this.getDistancia(this.evento.latitute, this.evento.longitude)
@@ -46,7 +50,7 @@ export class DetalharEventoPage {
 
 	initMap() {
 		var pointA = new google.maps.LatLng(this.latitudeUser, this.longitudeUser),
-		pointB = new google.maps.LatLng(this.evento.latitute, this.evento.longitude),
+		pointB = new google.maps.LatLng(this.evento.latitude, this.evento.longitude),
 		myOptions = {
 			zoom: 7,
 			center: pointA
@@ -111,7 +115,15 @@ export class DetalharEventoPage {
 
 	clickCard(){
 		console.log("PAGA PIVETE");
-		let myModal = this.modalCtrl.create(PagamentoModalPage);
+		let myModal = this.modalCtrl.create(PagamentoModalPage,{
+			item: this.evento.coverMinimo,
+			uidEvento: this.uidEvento
+		});
+		myModal.onDidDismiss(data =>{
+			if(data){
+				this.navCtrl.setRoot(UserPage);
+			}
+		});
 		myModal.present();
 	}
 }

@@ -14,10 +14,38 @@
 			</button>
 		</ion-buttons>
 	</ion-navbar>
+	<style type="text/css">
+		ion-input{
+			color: #ffffff;
+		}
+	</style>
 
 </ion-header>
 
 
 <ion-content padding>
+
+	<form  (ngSubmit)="pagamento()" >
+		<ion-list>
+			<!-- <input [(ngModel)]="email" name="email">
+			<p>Value: {{ email }}</p> -->
+			<ion-label stacked >Cartão</ion-label>
+			<ion-input type="text" [maxlength]="19" [(ngModel)]="cartao" name="cartao" (keyup)="mascara(cartao)" value="cartao"></ion-input>
+			<ion-label stacked>Codigo de Segurança</ion-label>
+			<ion-input type="text"  [maxlength]="3" [(ngModel)]="codSeguranca" name="codSeguranca" ></ion-input>
+			<ion-label stacked>Preço Cover</ion-label>
+			<ion-input type="text" disabled="true"  [(ngModel)]="cover" name=cover></ion-input>
+		</ion-list>
+
+		<ion-buttons>
+			<div class="col-sm-2">
+				<button type="submit" ion-button round color="light" outline class="outline-btn" >Confirmar Pagamento</button>
+			</div>
+		</ion-buttons>
+<!-- 
+		<div padding class="error" *ngIf="error">
+			<p>{{error}}</p>
+		</div> -->
+	</form>
 
 </ion-content>

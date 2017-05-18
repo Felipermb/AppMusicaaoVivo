@@ -83,11 +83,13 @@ export class UserPage {
 		this.authService.doLogout();
 		this.openHomePage();
 	}
-	navigate(evento){
+	navigate(evento, uid){
+		console.log(uid);
 		this.navCtrl.push(DetalharEventoPage, {
 			item: evento,
 			lat: this.latitudeUser,
-			lng: this.longitudeUser
+			lng: this.longitudeUser,
+			uidEvento: uid
 		});
 	}
 
